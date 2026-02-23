@@ -30,7 +30,6 @@ form.addEventListener("submit", function (event) {
 
     // Update team counter
     const teamCounter = document.getElementById(team + "Count");
-    console.log(teamCounter); // Log the team counter element to the console (for testing)
     const current = parseInt(teamCounter.textContent) + 1; // Get the current count for the team
     
 });
