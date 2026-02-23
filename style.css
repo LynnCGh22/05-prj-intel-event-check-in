@@ -7,16 +7,21 @@
 
 body {
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-  min-height: 100vh;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.35s ease,
+    max-height 0.4s ease,
+    padding 0.25s ease;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 /* Add form label styling */
 .form-label {
   display: block;
-  text-align: left;
+  max-height: 400px;
   margin-bottom: 15px;
   color: #475569;
   padding-left: 5px;
@@ -25,7 +30,41 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(
+  .attendee-list-section {
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .attendee-list {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+    max-height: 220px;
+    overflow: auto;
+    border-radius: 8px;
+    border: 1px solid #eef2f7;
+    padding: 10px;
+    background: #fbfdff;
+  }
+
+  .attendee-list li {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #334155;
+  }
+
+  .attendee-list li:last-child {
+    border-bottom: none;
+  }
+
+  .attendee-team {
+    color: #64748b;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+  background:
+    linear-gradient(
       135deg,
       rgba(0, 153, 219, 0.9) 0%,
       rgba(0, 104, 181, 0.9) 50%,
@@ -250,12 +289,55 @@ button .fas {
   border-radius: 8px;
   color: #333;
   margin-bottom: 15px;
-  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.35s ease,
+    max-height 0.4s ease;
 }
 
 .success-message {
   background-color: #e8f4fc;
   color: #003c71;
+}
+
+/* Greeting show animation */
+.greeting-show {
+  display: block;
+  opacity: 1;
+  max-height: 200px;
+  animation: greeting-pop 1s ease;
+}
+
+@keyframes greeting-pop {
+  0% {
+    transform: scale(0.98) translateY(6px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02) translateY(-2px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Disabled button/input styling when capacity is reached */
+button:disabled,
+button[disabled] {
+  background-color: #9bbbd6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+input:disabled,
+select:disabled {
+  background-color: #f1f5f9;
+  cursor: not-allowed;
 }
 
 /* Counter */
